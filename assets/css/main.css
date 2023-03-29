@@ -861,11 +861,40 @@ a.back-to-top:focus {
 .dropdown-item:active {
   background: transparent;
 }
-
+#expo,
+#oldExpo {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 .fadeInUpMenu {
   -webkit-animation-name: fadeInUpMenu;
   animation-name: fadeInUpMenu;
 }
+.image-collage {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.image-collage img {
+  width: calc(100% / 3 - 10px);
+  margin-bottom: 20px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .image-collage img {
+    width: calc(100% / 2 - 10px);
+  }
+}
+
+@media (max-width: 480px) {
+  .image-collage img {
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 440px) {
   img#nav-logo {
     margin: 0px !important;
@@ -2523,6 +2552,45 @@ footer {
 .col-lg-4 {
   max-width: unset !important;
 }
+/* Desktop styles */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 10px;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease-out;
+}
+.gallery-item.large {
+  grid-row-end: span 2;
+  grid-column-end: span 2;
+}
+.gallery-item.medium {
+  grid-row-end: span 2;
+  grid-column-end: span 1;
+}
+.gallery-item.small {
+  grid-row-end: span 1;
+  grid-column-end: span 1;
+}
+
+/* Mobile styles */
+@media only screen and (max-width: 768px) {
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 10px;
+  }
+}
 
 /* ==========================================================================
 3. Hero Area
@@ -2532,6 +2600,7 @@ footer {
   background: url(https://w0.peakpx.com/wallpaper/372/231/HD-wallpaper-f1-amoled-formula-car-black.jpg);
   /* background-color: #292828; */
   background-size: cover;
+  background-position: center;
   height: 100vh;
 }
 
@@ -2544,6 +2613,13 @@ footer {
   padding: 0rem 2rem;
   font-weight: bolder;
   text-shadow: 1px -1px 0 #ff0000, -1px -1px 0 #001aff;
+}
+#expo #text1,
+#oldExpo #text1 {
+  font-size: calc(
+    20px + (48 - 20) * ((100vw - 320px) / (1280 - 320))
+  ) !important;
+  margin: calc(20px + (40 - 20) * ((100vw - 320px) / (1280 - 320)));
 }
 #text2 {
   margin: calc(10px + (14 - 10) * ((100vw - 320px) / (1280 - 320))) !important;
@@ -2691,7 +2767,8 @@ div#clock {
 @media (max-width: 720px) {
   .hero-area-bg {
     /* background: url(../img/hero-area.jpg) no-repeat; */
-    background: url(../img/background/onlybg.png) no-repeat !important;
+    /* background: url(https://media-public.canva.com/_01pI/MAEOiJ_01pI/1/t.jpg) */
+    /* no-repeat !important; */
     background-size: cover !important;
     background-position: center;
     height: 100vh;
@@ -2709,7 +2786,8 @@ div#clock {
 @media (max-width: 445px) {
   .hero-area-bg {
     /* background: url(../img/hero-area.jpg) no-repeat; */
-    background: url(../img/background/onlybg.png) no-repeat !important;
+    /* background: url(https://w0.peakpx.com/wallpaper/372/231/HD-wallpaper-f1-amoled-formula-car-black.jpg) */
+    /* no-repeat !important; */
     background-size: cover;
     background-position: center;
     height: 100vh;
